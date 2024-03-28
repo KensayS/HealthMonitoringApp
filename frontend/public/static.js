@@ -1,0 +1,1 @@
+//all static pages (pages that don't change)
