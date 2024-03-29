@@ -1,0 +1,267 @@
+.fitbit-analyzer {
+  font-family: 'Nunito';
+  font-style: normal;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background: #11175D;
+  color: white;
+}
+
+.navigation .logo {
+  font-size: 1.5em;
+}
+
+.navigation nav ul {
+  list-style: none;
+  display: flex;
+}
+
+.navigation nav ul li {
+  margin-left: 20px;
+}
+
+.navigation nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.main-content {
+  text-align: center;
+  padding: 2em;
+  background-color: #f4f4f4;
+}
+
+.main-content h1 {
+  color: #000;
+  margin-bottom: 0.5em;
+}
+
+/* this is a comment
+
+
+
+position: relative;
+width: 1440px;
+height: 1204px;
+
+background: #FFFFFF;
+
+
+/* Fitbit Analyzer 
+
+position: absolute;
+width: 674px;
+height: 80px;
+left: 64px;
+top: 122px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 700;
+font-size: 88px;
+line-height: 80px;
+/* identical to box height, or 91% */
+
+
+
+
+
+/* Content 
+
+/* Auto layout 
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+position: absolute;
+width: 526px;
+height: 171px;
+left: 851px;
+top: 122px;
+
+background: #FFFFFF;
+
+
+/* Welcome to the Fitbit Analyzer web app, where you are able take your Fitbit statistics to another level! 
+
+width: 526px;
+height: 105px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 26px;
+line-height: 35px;
+
+color: #11175D;
+
+
+/* Inside auto layout 
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Primary button 
+
+/* Auto layout 
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 16px 32px;
+gap: 10px;
+
+width: 156px;
+height: 50px;
+
+background: #193FF6;
+border-radius: 16px;
+
+/* Inside auto layout 
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Get started 
+
+width: 92px;
+height: 18px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 18px;
+/* identical to box height, or 100% 
+
+color: #FFFFFF;
+
+
+/* Inside auto layout 
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 2 
+
+position: absolute;
+width: 1318px;
+height: 823px;
+left: 61px;
+top: 328px;
+
+background: url(image.png);
+border-radius: 10px;
+
+
+/* Navs 
+
+position: absolute;
+width: 1440px;
+height: 84px;
+left: 0px;
+top: 0px;
+
+background: #11175D;
+
+
+/* Logo 
+
+/* Auto layout 
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 2px;
+
+position: absolute;
+width: 69px;
+height: 24px;
+left: 37px;
+top: 32px;
+
+
+
+/* Star 1 
+
+width: 18px;
+height: 18px;
+
+/* White 
+background: #FFFFFF;
+border-radius: 1px;
+
+/* Inside auto layout 
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Logo 
+
+width: 49px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 24px;
+text-transform: capitalize;
+
+/* White 
+color: #FFFFFF;
+
+
+/* Inside auto layout 
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Home 
+
+position: absolute;
+width: 55px;
+height: 27px;
+left: 1240px;
+top: 29px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+text-transform: capitalize;
+
+/* White 
+color: #FFFFFF;
+
+
+/* Profile 
+position: absolute;
+width: 59px;
+height: 27px;
+left: 1317px;
+top: 29px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+text-transform: capitalize;
+
+/* White 
+color: #FFFFFF;
+*/
