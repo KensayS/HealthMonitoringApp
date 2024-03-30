@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Register from './pages/Register';
@@ -6,11 +6,12 @@ import Login from './pages/Login';
 import BackendDemo from './pages/BackendDemo';
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from './firebaseBackend/firebaseConfig';
-import FitbitDataComponent from './FitbitDataComponent';
+
 
 const app = initializeApp(firebaseConfig);
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>
