@@ -8,3 +8,10 @@ Interactive charts and graphs will be provided for easy health data visualizatio
 
 Trends can be analyzed from these charts/graphs.
 
+# How to Run
+
+cd into the frontend folder
+
+run npm install or npm i
+
+run npm start
