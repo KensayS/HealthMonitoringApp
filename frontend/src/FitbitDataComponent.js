@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {CLIENT_ID, CLIENT_SECRET, REDIRECT_URI} from './credentials.js'
 
 
 const FitbitDataComponent = () => {
@@ -6,9 +7,9 @@ const FitbitDataComponent = () => {
     const [heartrate, setHeartrate] = useState('');
 
     /************ Change for your app *************/
-    const clientId = '';
-    const clientSecret = '';
-    const redirectUri = ''; // the redirectURL in FitBit app
+    const clientId = CLIENT_ID;
+    const clientSecret = CLIENT_SECRET;
+    const redirectUri = REDIRECT_URI; // the redirectURL in FitBit app
  
     /*  ------------------------------ Authorization ------------------------------  */
 
