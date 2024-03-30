@@ -1,8 +1,10 @@
 import React from 'react';
+import LoginPage from './login';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './welcome';
 import reportWebVitals from './reportWebVitals';
+import SignUpPage from './signup';
 
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,7 +14,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <SignUpPage />
   </React.StrictMode>
 );
 
