@@ -16,7 +16,7 @@ const Register = () => {
     // Check if the user is already logged in
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate('/');
+        navigate('/home');
       }
     });
 
@@ -29,7 +29,6 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential); // demo
-        navigate('/home');
         navigate('/home');
       })
       .catch((error) => {

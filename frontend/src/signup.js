@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './signup.css';
+import { Link } from "react-router-dom";
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -82,7 +83,7 @@ const SignUpPage = () => {
         />
         <button type="submit" className="signup-button">Sign up</button>
         <p className="login-text">
-          Already a user? <a href="/login">Login</a>
+          Already a user? <Link to="/login">Login</Link>
         </p>
       </form>
     </div>
