@@ -89,23 +89,11 @@ function BackendDemo() {
 
     return (
         <div>
-            <h1>Backend Demo</h1>
+            <h1>Personal Data</h1>
             <p><b>Firebase Auth UID: </b> {firebaseUID}</p>
             <p><b>FitBit UID: </b> {fitbitUID}</p>
             <p><b>User Email: </b> {userEmail}</p>
             <p><Link to="/login">Log in</Link> <Link to="/register">Register</Link></p>
-            <hr />
-            <p>Write Data to doc with FireStore UID:
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        <input type="text" placeholder="field name" value={arg1} onChange={(e) => setArg1(e.target.value)} />
-                    </label>
-                    <label>
-                        <input type="text" placeholder="field value" value={arg2} onChange={(e) => setArg2(e.target.value)} />
-                    </label>
-                    <button type="submit">Submit</button>
-                </form>
-            </p>
             <hr />
             <b>All data from collection: </b>
             <pre>{allData ? JSON.stringify(allData, null, 2) : 'Loading data...'}</pre>
