@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Welcome from './welcome';
-import Register from './signup';
-import Home from "./home"
-import Login from './login';
+import Register from './pages/Register';
+import Home from './home'
+import Login from './pages/Login';
 import BackendDemo from './pages/BackendDemo';
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from './firebaseBackend/firebaseConfig';

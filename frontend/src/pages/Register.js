@@ -15,21 +15,21 @@ const Register = () => {
   useEffect(() => {
     // Check if the user is already logged in
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-            navigate('/');
-        }
+      if (user) {
+        navigate('/');
+      }
     });
 
     // Clean up the subscription on unmount
     return () => unsubscribe();
-}, [auth, navigate]);
+  }, [auth, navigate]);
 
   const registerAccount = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential); // demo
-        navigate('/');
+        navigate('/home');
       })
       .catch((error) => {
         console.log(error);
@@ -49,15 +49,15 @@ const Register = () => {
         <input
           type="password"
           placeholder="Enter your password"
-          value={password}
+          value={password} 
           onChange={(e) => setPassword(e.target.value)}
         ></input>
-        <button type="submit">Sign Up</button>
+          <button type="submit">Sign Up</button>
       </form>
       <p>
-        Already have an account? <Link to="/login">Log in here</Link>
+        Already have an account? <Link to="/Login">Log in here</Link>
       </p>
-    </div>
+    </div >
   );
 };
 

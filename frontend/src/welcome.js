@@ -1,6 +1,5 @@
 import React from 'react';
 import './welcome.css';
-import Login from './pages/Login';
 import logo from './welcomepicture.PNG';
 import { Link } from "react-router-dom";
 
@@ -36,8 +35,8 @@ const Header = () => {
 
 const MainSection = () => {
   return (
-    <main className="main-content">
-      <div className="" >
+    <main className="">
+      <div className="main-content" >
         <div className="row mx-0 align-items-center">
           <div className="col-xl-6 col-md-12 ">
             <h1 className="welcome-title">Fitbit Analyzer</h1>
