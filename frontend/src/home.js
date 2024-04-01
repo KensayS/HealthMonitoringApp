@@ -1,7 +1,7 @@
 import React from 'react';
 import './welcome.css';
 import { Link } from "react-router-dom";
-import FitbitDataComponent from './fitbit/FitbitDataComponent';
+import BackendDemo from './pages/BackendDemo';
 
 
 const Home = () => {
@@ -9,6 +9,7 @@ const Home = () => {
         <div className="fitbit-analyzer-container">
             <Header />
             <MainSection />
+            <BackendDemo />
         </div>
     );
 };

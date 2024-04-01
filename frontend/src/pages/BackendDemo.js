@@ -107,9 +107,11 @@ function BackendDemo() {
                 </form>
             </p>
             <hr />
-            <b>All data from collection: </b><pre>{JSON.stringify(allData)}</pre>
+            <b>All data from collection: </b>
+            <pre>{allData ? JSON.stringify(allData, null, 2) : 'Loading data...'}</pre>
             <hr />
-            <b>Data From FireStore UID {"(should be your data)"}: </b><pre>{JSON.stringify(UIDData)}</pre>
+            <b>Data From FireStore UID {"(should be your data)"}: </b>
+            <pre>{UIDData ? JSON.stringify(UIDData, null, 2) : 'Loading data...'}</pre>
         </div>
     );
 }
