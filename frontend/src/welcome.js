@@ -1,8 +1,10 @@
 import React from 'react';
 import './welcome.css';
+import Login from './pages/Login';
 import logo from './welcomepicture.PNG';
+import { Link } from "react-router-dom";
 
-const FitbitAnalyzer = () => {
+const Welcome = () => {
   return (
     <div className="fitbit-analyzer-container">
       <Header />
@@ -17,18 +19,18 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg navbar-custom py-3 fixed-top" data-bs-theme="dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">Fitbit</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <button className=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
-              <a className="nav-link" href="#">Profile</a>
+            <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+              <div className="navbar-nav">
+                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                <a className="nav-link" href="#">Profile</a>
+              </div>
             </div>
-          </div>
         </div>
       </nav>
-    </header>
+    </header >
   );
 };
 
@@ -42,18 +44,15 @@ const MainSection = () => {
           </div>
           <div className="col-xl-6 col-sm-12">
             <p className="welcome-text">Welcome to the Fitbit Analyzer web app, where you are able take your Fitbit statistics to another level!</p>
-            <button type="button" className="btn btn-primary btn-lg">Get Started</button>
+            <Link to="/login"><button type="button" className="btn btn-primary btn-lg">Get Started</button></Link>
           </div>
         </div>
         <div className="container welcome-image text-center">
           <img src={logo} alt="" className="image-adjust rounded"></img>
         </div>
       </div>
-
-
-      {/* Background image would be set in CSS */}
     </main>
   );
 };
 
-export default FitbitAnalyzer;
+export default Welcome;
