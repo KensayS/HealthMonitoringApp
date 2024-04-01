@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Welcome from './welcome';
-import Signup from './pages/Register';
-import Home from "./home"
+import Register from './pages/Register';
+import Home from './home'
 import Login from './pages/Login';
 import BackendDemo from './pages/BackendDemo';
 import { initializeApp } from 'firebase/app';
@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} /> 
         <Route path="/welcome" element={<Welcome />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/backenddemo" element={<BackendDemo />} />

@@ -20,7 +20,7 @@ a.nav-link {
 
 .main-content {
   padding: 2em;
-  padding-top: 8rem;
+  padding-top: 4rem;
 }
 
 .welcome-title {
@@ -48,7 +48,15 @@ main {
 
 }
 
-.image-adjust{
+.image-adjust {
   width: 100%;
 }
 
+.fitbit-surround {
+  background: #11175D;
+  border-radius: 5% 5% 0% 0%;
+  width: 100%;
+  height: 50rem;
+  padding: 0px;
+  margin: 0px;
+}

@@ -24,8 +24,8 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
-                            <a className="nav-link" href="#">Profile</a>
+                            <Link className="nav-link" aria-current="Home" href="#">Home</Link>
+                            <Link className="nav-link active" aria-current="Profile" href="#">Profile</Link>
                         </div>
                     </div>
                 </div>
@@ -36,21 +36,20 @@ const Header = () => {
 
 const MainSection = () => {
     return (
-        <main className="main-content">
-            <div className="" >
-                <div className="row mx-0 align-items-center justify-content-center">
+        <main className="">
+            <div className="main-content" >
+                <div className="row align-items-center text-center">
                     <div className="col-12">
-                        <h1 className="welcome-title">Fitbit Analyzer</h1>
+                        <h1 className="welcome-title">Homepage</h1>
                     </div>
-                    <div className="col-xl-6 col-sm-12">
-                        <p className="welcome-text">Welcome to the Fitbit Analyzer web app, where you are able take your Fitbit statistics to another level!</p>
-                        <Link to="/login"><button type="button" className="btn btn-primary btn-lg">Get Started</button></Link>
+                    <div className="col-12">
+                        <p className="welcome-text">Welcome to your personal homepage! Here you can access your personalized health graphs and charts, taken from your Fitbit Inspire 2!</p>
                     </div>
-                </div>
-                <div>
                 </div>
             </div>
+            <div className = "fitbit-surround"></div>
         </main>
+        
     );
 };
 
