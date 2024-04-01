@@ -28,7 +28,7 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log(userCredential); // demo
-                navigate('/');
+                navigate('/home');
             })
             .catch((error) => {
                 console.log(error);
@@ -54,7 +54,7 @@ const Login = () => {
                 <button type="submit">Log In</button>
             </form>
             <p>
-                <Link to="/register">Don't have an account? Register here</Link>
+                <Link to="/signup">Don't have an account? Register here</Link>
             </p>
         </div>
     );

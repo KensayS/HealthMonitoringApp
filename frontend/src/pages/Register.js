@@ -29,7 +29,7 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential); // demo
-        navigate('/');
+        navigate('/home');
       })
       .catch((error) => {
         console.log(error);
@@ -52,7 +52,7 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         ></input>
-        <button type="submit">Sign Up</button>
+        <Link to='/home'><button type="submit">Sign Up</button></Link>
       </form>
       <p>
         Already have an account? <Link to="/login">Log in here</Link>

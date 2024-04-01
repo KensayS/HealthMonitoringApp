@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Welcome from './welcome';
-import Register from './signup';
+import Signup from './pages/Register';
 import Home from "./home"
-import Login from './login';
+import Login from './pages/Login';
 import BackendDemo from './pages/BackendDemo';
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from './firebaseBackend/firebaseConfig';
@@ -17,10 +17,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="/" element={<Welcome />} /> 
         <Route path="/welcome" element={<Welcome />} />
-        <Route path="/signup" element={<Register />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/backenddemo" element={<BackendDemo />} />
