@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import firebaseConfig from "../firebaseBackend/firebaseConfig";
 import { initializeApp } from "firebase/app";
 import { useNavigate, Link } from "react-router-dom";
+import '../pages/form.css';
 
 const Login = () => {
     const app = initializeApp(firebaseConfig);
@@ -36,26 +37,43 @@ const Login = () => {
     };
 
     return (
-        <div className="sign-in-container">
-            <form onSubmit={login}>
-                <h1>Log In to your Account</h1>
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                ></input>
-                <input
-                    type="password"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                ></input>
-                <button type="submit">Log In</button>
-            </form>
-            <p>
-                <Link to="/Register">Don't have an account? Register here</Link>
-            </p>
+        <div className="sign-in-container container-fluid">
+            <div className="content" >
+                <form onSubmit={login}>
+                    <div className="form-title">
+                        <h1>Log In to your Account</h1>
+                    </div>
+                    <div className="input-cluster">
+                        <label for="email" className="form-label">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        ></input>
+                    </div>
+                    <div className="input-cluster">
+                        <label for="password" className="form-label">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            class="form-control"
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        ></input>
+                    </div>
+                    <div className="d-grid gap-2 button-prop shadow-lg">
+                        <button type="submit" className="btn btn-primary" >Log In</button>
+                    </div>
+
+                </form>
+                <p>
+                    Don't have an account?<Link to="/Register" className="link-offset-2-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"> Register here</Link>
+                </p>
+            </div>
         </div>
     );
 };

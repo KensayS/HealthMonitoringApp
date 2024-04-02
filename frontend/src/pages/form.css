@@ -1,0 +1,35 @@
+.form-title {
+    color: #11175D;
+    text-align: center;
+}
+
+.sign-in-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #11175D;
+}
+
+.content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5%;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    color: #11175D;
+}
+
+.input-cluster {
+    margin-top: 0.5rem;
+    margin-bottom: 0.7rem;
+}
+
+.button-prop {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
