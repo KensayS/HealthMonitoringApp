@@ -23,4 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 #secret credentials
-src/credentials.js
+src/fitbit/credentials.js
+
+.firebase
