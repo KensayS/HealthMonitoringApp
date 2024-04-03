@@ -2,8 +2,11 @@ import React from 'react';
 import './welcome.css';
 import logo from './welcomepicture.PNG';
 import { Link } from "react-router-dom";
+import {useFitbitAuth} from './fitbit/fitbitAuth'
 
 const Welcome = () => {
+  useFitbitAuth();
+
   return (
     <div className="fitbit-analyzer-container">
       <Header />

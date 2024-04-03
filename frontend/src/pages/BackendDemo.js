@@ -93,7 +93,7 @@ function BackendDemo() {
             <p><b>Firebase Auth UID: </b> {firebaseUID}</p>
             <p><b>FitBit UID: </b> {fitbitUID}</p>
             <p><b>User Email: </b> {userEmail}</p>
-            <p><Link to="/login">Log in</Link> <Link to="/register">Register</Link></p>
+            <p><Link to="/login">Log in</Link> <Link to="/register">Register</Link> <Link to="/logout">Logout</Link></p>
             <hr />
             <b>All data from collection: </b>
             <pre>{allData ? JSON.stringify(allData, null, 2) : 'Loading data...'}</pre>
