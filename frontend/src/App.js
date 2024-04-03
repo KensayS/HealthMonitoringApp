@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} /> 
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/fitbitLogout" element={<FitbitLogout />} />
