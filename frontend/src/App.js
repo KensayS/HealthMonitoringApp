@@ -7,6 +7,7 @@ import Home from './home';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Goals from './pages/Goals';
+import Profile from './pages/Profile';
 import FitbitLogout from './pages/FitbitLogout';
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from './firebaseBackend/firebaseConfig';
@@ -27,6 +28,7 @@ function App() {
         <Route path="/fitbitLogout" element={<FitbitLogout />} />
         <Route path="*" element={<Navigate to="/login" />} />
         <Route path="/goals" element={<Goals/>} />
+        <Route path="/profile" element={<Profile/>} />
       </Routes>
     </BrowserRouter>
   );
