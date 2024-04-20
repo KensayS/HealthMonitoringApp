@@ -31,7 +31,7 @@ const Header = () => {
                                 <Link className="nav-link dropdown-toggle active" id="move" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Profile</Link>
                                 <ul className="dropdown-menu dropdown-menu-end">
                                     <li><Link className="dropdown-item" href="#">Edit Profile</Link></li>
-                                    <li><Link className="dropdown-item" href="#">Logout</Link></li>
+                                    <li><Link to="/logout" className="dropdown-item">Logout</Link></li>
                                 </ul>
                             </div>
                         </div>
