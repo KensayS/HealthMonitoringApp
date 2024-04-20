@@ -1,0 +1,19 @@
+* {
+    font-family: 'Nunito';
+  }
+  
+  .navbar-custom {
+    background: #11175D !important;
+    font-size: 1.5rem;
+  }
+  
+  a.navbar-brand {
+  
+    padding-left: 1%;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  
+  a.nav-link {
+    padding-right: 3%;
+  }
