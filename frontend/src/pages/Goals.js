@@ -1,9 +1,6 @@
 import React from 'react';
-import '../pages/Goals.css';
 import { Link } from "react-router-dom";
-import sleep from '../moon.png';
-import steps from '../steps.png';
-import fire from '../fire.png';
+import './main.css';
 
 const Goals = () => {
     return (
@@ -49,31 +46,31 @@ const MainSection = () => {
                 <div className= "align-items-center text-center">
                     <h1 className="welcome-title">Goals</h1>
                 </div>
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card">
-                            <img src={sleep} class="card-img-top" alt="..."></img>
-                            <div class="card-body">
-                                <h2 class="card-title">Sleep Goals</h2>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div className="row row-cols-1 row-cols-md-3 g-4">
+                    <div className="col">
+                        <div className="card shadow-lg">
+                            <img src="/moon.png" className="card-img-top" alt="..."></img>
+                            <div className="card-body">
+                                <h2 className="card-title goal-title">Sleep Goals</h2>
+                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src={steps} class="card-img-top" alt="..."></img>
-                            <div class="card-body">
-                                <h2 class="card-title">Step Goals</h2>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div className="col">
+                        <div className="card shadow-lg">
+                            <img src="/Steps.png" className="card-img-top" alt="..."></img>
+                            <div className="card-body">
+                                <h2 className="card-title goal-title">Step Goals</h2>
+                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src={fire} class="card-img-top" alt="..."></img>
-                            <div class="card-body">
-                                <h2 class="card-title">Calorie Goals</h2>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p>
+                    <div className="col">
+                        <div className="card shadow-lg">
+                            <img src="/fire.png" className="card-img-top" alt="..."></img>
+                            <div className="card-body">
+                                <h2 className="card-title goal-title">Calorie Goals</h2>
+                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p>
                             </div>
                         </div>
                     </div>

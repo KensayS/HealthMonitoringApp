@@ -2,6 +2,9 @@
   font-family: 'Nunito';
 }
 
+
+/* Navbar stuff */
+
 .navbar-custom {
   background: #11175D !important;
   font-size: 1.5rem;
@@ -14,11 +17,27 @@ a.navbar-brand {
   font-weight: 500;
 }
 
-a.nav-link {
-  padding-right: 3%;
+#move {
+  padding-right: 1.3rem;
 }
 
+.navbar-nav>.nav-item>.dropdown-menu {
+  background-color: white;
+}
+
+.navbar-nav>.nav-item>.dropdown-menu a {
+  color: #555555;
+  font-size: 1.3rem;
+}
+
+.navbar-nav>.nav-item>.dropdown-menu a:hover {
+  background-color: #e0e2e9;
+}
+
+/* end navbar stuff */
+
 .main-content {
+  
   padding: 2em;
   padding-top: 4rem;
 }
@@ -41,6 +60,7 @@ a.nav-link {
 
 main {
   padding-top: 5%;
+  height: 100%;
 }
 
 .welcome-image {
@@ -59,4 +79,8 @@ main {
   height: 50rem;
   padding: 0px;
   margin: 0px;
+}
+
+h2.goal-title {
+  font-size: 3rem;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import './welcome.css';
+import './main.css';
 import { Link } from "react-router-dom";
-import BackendDemo from './pages/BackendDemo';
+import BackendDemo from './BackendDemo';
 
 
 const Home = () => {
@@ -48,9 +48,9 @@ const MainSection = () => {
                     </div>
                 </div>
             </div>
-            <div className = "fitbit-surround"></div>
+            <div className="fitbit-surround"></div>
         </main>
-        
+
     );
 };
 

@@ -30,6 +30,16 @@ label {
 }
 
 .button-prop {
+ 
     margin-top: 1.5rem;
     margin-bottom: 1rem;
+}
+
+.button-space{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+#white-back{
+    background-color: rgb(230, 234, 238);
 }
