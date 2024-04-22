@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import firebaseConfig from "../firebaseBackend/firebaseConfig";
 import { initializeApp } from "firebase/app";
 import { useNavigate, Link } from "react-router-dom";
@@ -12,16 +12,15 @@ const Register = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [type, setType] = useState(""); // default to "User"
 
   useEffect(() => {
-    // Check if the user is already logged in
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         navigate('/home');
       }
     });
 
-    // Clean up the subscription on unmount
     return () => unsubscribe();
   }, [auth, navigate]);
 
@@ -29,12 +28,23 @@ const Register = () => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential); // demo
-        navigate('/home');
+        // Update the user profile with the account type
+        updateProfile(userCredential.user, { displayName: type })
+          .then(() => {
+            console.log(userCredential);
+            navigate('/home');
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
   };
 
   return (
@@ -42,8 +52,8 @@ const Register = () => {
       <div className="content" >
         <form onSubmit={registerAccount}>
           <div className="form-title">
-            <h1>Create Account</h1>
-          </div>
+          <h1>Create Account</h1>
+      </div>
           <div className="input-cluster">
             <label for="email" className="form-label">Email Address</label>
             <input
@@ -66,6 +76,20 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </div>
+
+          <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioCoach" value="Coach" onChange={handleTypeChange} />
+        <label class="form-check-label" for="flexRadioCoach">
+          Sign Up as Coach
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioUser" value="User" checked={type === "User"} onChange={handleTypeChange} />
+        <label class="form-check-label" for="flexRadioUser">
+          Sign Up as User
+        </label>
+      </div>
+
           <div className="d-grid gap-2 button-prop shadow-lg">
             <button type="submit" className="btn btn-primary" >Sign Up</button>
           </div>

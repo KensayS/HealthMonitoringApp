@@ -1,18 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import firebaseConfig from "../firebaseBackend/firebaseConfig";
+import { initializeApp } from "firebase/app";
 import './main.css';
 import Nav from '../components/navbar'
 import Slider from '../components/slider'
 
 const Goals = () => {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const [accountType, setAccountType] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setAccountType(user.displayName); // assuming displayName is used to store account type
+            }
+        });
+
+        return () => unsubscribe();
+    }, [auth]);
+
     return (
         <div className="fitbit-analyzer-container">
             <Nav />
-            <MainSection />
+            {accountType === 'Coach' ? <CoachMainSection /> : <UserMainSection />}
         </div>
     );
 };
 
-const MainSection = () => {
+
+const CoachMainSection = () => {
+
+    return (
+        <main className="">
+            <div className="main-content">
+                <div className="align-items-center text-center">
+                    <h1 className="welcome-title">Coach Section with Nothing.</h1>
+                </div>
+            </div>
+        </main>
+    );
+};
+
+const UserMainSection = () => {
     const [sleepValue, setSleep] = useState(8)
     const [stepValue, setStep] = useState(5000)
     const [calValue, setCal] = useState(2000)
