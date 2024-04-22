@@ -1,0 +1,29 @@
+
+.navbar-custom {
+    background: #11175D !important;
+    font-size: 1.5rem;
+  }
+  
+  a.navbar-brand {
+  
+    padding-left: 1%;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  
+  #move {
+    padding-right: 1.3rem;
+  }
+  
+  .navbar-nav>.nav-item>.dropdown-menu {
+    background-color: white;
+  }
+  
+  .navbar-nav>.nav-item>.dropdown-menu a {
+    color: #555555;
+    font-size: 1.3rem;
+  }
+  
+  .navbar-nav>.nav-item>.dropdown-menu a:hover {
+    background-color: #e0e2e9;
+  }

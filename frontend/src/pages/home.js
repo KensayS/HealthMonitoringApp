@@ -1,37 +1,17 @@
 import React from 'react';
 import './main.css';
-import { Link } from "react-router-dom";
+import '../components/navbar.css'
 import BackendDemo from './BackendDemo';
+import Nav from '../components/navbar'
 
 
 const Home = () => {
     return (
         <div className="fitbit-analyzer-container">
-            <Header />
+            <Nav />
             <MainSection />
             <BackendDemo />
         </div>
-    );
-};
-
-const Header = () => {
-    return (
-        <header className="header">
-            <nav className="navbar navbar-expand-lg navbar-custom py-3 fixed-top" data-bs-theme="dark">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Fitbit</a>
-                    <button className=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <Link className="nav-link" aria-current="Home" href="#">Home</Link>
-                            <Link className="nav-link active" aria-current="Profile" href="#">Profile</Link>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header >
     );
 };
 

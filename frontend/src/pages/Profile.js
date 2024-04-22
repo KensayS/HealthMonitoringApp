@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../pages/form.css';
-import { Link } from "react-router-dom";
+import Nav from '../components/navbar'
 
 const Profile = () => {
     // const [email, setEmail] = useState("");
@@ -16,38 +16,9 @@ const Profile = () => {
 
     return (
         <div className="fitbit-analyzer-container">
-            <Header />
+            <Nav />
             <MainSection />
         </div>
-    );
-};
-
-
-const Header = () => {
-    return (
-        <header className="header">
-            <nav className="navbar navbar-expand-lg navbar-custom py-3 fixed-top" data-bs-theme="dark">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to="#">Fitbit</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
-                            <Link className="nav-link active" aria-current="page" to="/goals">Goals</Link>
-                            <div className="dropdown-center nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle active" id="move" data-bs-toggle="dropdown" to="#" role="button" aria-expanded="false">Profile</Link>
-                                <ul className="dropdown-menu dropdown-menu-end">
-                                    <li><Link className="dropdown-item" to="#">Edit Profile</Link></li>
-                                    <li><Link to="/logout" className="dropdown-item">Logout</Link></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
     );
 };
 
@@ -71,12 +42,23 @@ const MainSection = () => {
                         ></input>
                     </div>
                     <div className="input-cluster">
-                        <label for="password" className="form-label">Password</label>
+                        <label for="password" className="form-label">Old Password</label>
                         <input
                             type="password"
                             id="password"
                             class="form-control"
-                            placeholder="Enter your password"
+                            placeholder="Enter old password"
+                        // value={password}
+                        // onChange={(e) => setPassword(e.target.value)}
+                        ></input>
+                    </div>
+                    <div className="input-cluster">
+                        <label for="password" className="form-label">New Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            class="form-control"
+                            placeholder="Enter new password"
                         // value={password}
                         // onChange={(e) => setPassword(e.target.value)}
                         ></input>
