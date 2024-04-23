@@ -30,11 +30,6 @@ const Goals = () => {
     );
 };
 
-
-
-
-
-
 const CoachMainSection = () => {
 
     return (
@@ -73,7 +68,7 @@ const UserMainSection = () => {
                 </div>
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     <div className="col">
-                        <div className="card shadow-lg">
+                        <div className="card shadow-lg h-100">
                             <img src="/moon.png" className="card-img-top" alt="Sleep Goals Icon"></img>
                             <div className="card-body">
                                 <h2 className="card-title goal-title">Sleep Goals</h2>
@@ -93,7 +88,7 @@ const UserMainSection = () => {
                         </div>
                     </div>
                     <div className="col">
-                        <div className="card shadow-lg">
+                        <div className="card shadow-lg h-100">
                             <img src="/Steps.png" className="card-img-top" alt="Steps Goals Icon"></img>
                             <div className="card-body">
                                 <h2 className="card-title goal-title">Step Goals</h2>
@@ -113,7 +108,7 @@ const UserMainSection = () => {
                         </div>
                     </div>
                     <div className="col">
-                        <div className="card shadow-lg">
+                        <div className="card shadow-lg h-100">
                             <img src="/fire.png" className="card-img-top" alt="Calorie Goals Icon"></img>
                             <div className="card-body">
                                 <h2 className="card-title goal-title">Calorie Goals</h2>
