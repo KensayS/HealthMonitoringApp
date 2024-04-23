@@ -6,9 +6,10 @@ const Slider = ({ value, min, max, step, label, changeHandler }) => {
 
     return (
         <div>
-            <label htmlFor="sliderInput">{label}</label>
+            <label htmlFor="sliderInput" >{label}</label>
             <div>
                 <input
+                    class="form-range"
                     type="range"
                     id="sliderInput"
                     name="sliderInput"

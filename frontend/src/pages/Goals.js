@@ -48,15 +48,15 @@ const UserMainSection = () => {
     const [stepValue, setStepValue] = useState(5000)
     const [calValue, setCalValue] = useState(2000)
 
-    function handleSleepChange(event) {
+    function handleSleepChange (event) {
         setSleepValue(parseInt(event.target.value))
     };
 
-    const handleStepChange = (event) => {
+    function handleStepChange (event) {
         setStepValue(parseInt(event.target.value));
     };
 
-    const handleCalChange = (event) => {
+    function handleCalChange (event) {
         setCalValue(parseInt(event.target.value));
     };
 
@@ -81,7 +81,7 @@ const UserMainSection = () => {
                                         step={1}
                                         label="Set Sleep Goal:"
                                         changeHandler={handleSleepChange} />
-                                    <h3>{sleepValue} hours</h3>
+                                    <h3 className="text-center range-visual">{sleepValue} hours</h3>
                                     <button type="button" className="btn btn-primary btn justify-content-center">Set Goal</button>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@ const UserMainSection = () => {
                                         step={500}
                                         label="Set Steps Goal:"
                                         changeHandler={handleStepChange} />
-                                    <h3>{stepValue} steps</h3>
+                                    <h3 className="text-center range-visual">{stepValue} steps</h3>
                                     <button type="button" className="btn btn-primary btn justify-content-center">Set Goal</button>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@ const UserMainSection = () => {
                                         step={100}
                                         label="Set Calorie Goal:"
                                         changeHandler={handleCalChange} />
-                                    <h3>{calValue} calories</h3>
+                                    <h3 className="text-center range-visual">{calValue} calories</h3>
                                     <button type="button" className="btn btn-primary btn justify-content-center">Set Goal</button>
                                 </div>
                             </div>
