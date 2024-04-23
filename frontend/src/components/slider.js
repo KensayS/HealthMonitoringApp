@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Slider = ({ value, min, max, step, label, handleChange }) => {
+const Slider = ({ value, min, max, step, label, changeHandler }) => {
     
 
     return (
@@ -13,8 +13,8 @@ const Slider = ({ value, min, max, step, label, handleChange }) => {
                 min={min}
                 max={max}
                 step={step}
-                defaultValue={value}
-                onChange={handleChange}
+                value={value}
+                onChange={changeHandler}
             />
         </div>
     );

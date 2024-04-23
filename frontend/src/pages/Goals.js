@@ -31,6 +31,10 @@ const Goals = () => {
 };
 
 
+
+
+
+
 const CoachMainSection = () => {
 
     return (
@@ -45,18 +49,20 @@ const CoachMainSection = () => {
 };
 
 const UserMainSection = () => {
-    const [sleepValue, setSleep] = useState(8)
-    const [stepValue, setStep] = useState(5000)
-    const [calValue, setCal] = useState(2000)
+    const [sleepValue, setSleepValue] = useState(8)
+    const [stepValue, setStepValue] = useState(5000)
+    const [calValue, setCalValue] = useState(2000)
 
-    const sleepChange = (event) => {
-        setSleep(event.target.sleepValue)
+    function handleSleepChange(event) {
+        setSleepValue(parseInt(event.target.value))
     };
-    const stepChange = (event) => {
-        setStep(event.target.stepValue)
+
+    const handleStepChange = (event) => {
+        setStepValue(parseInt(event.target.value));
     };
-    const calChange = (event) => {
-        setCal(event.target.calValue)
+
+    const handleCalChange = (event) => {
+        setCalValue(parseInt(event.target.value));
     };
 
     return (
@@ -79,7 +85,7 @@ const UserMainSection = () => {
                                         max={12}
                                         step={1}
                                         label="Set Sleep Goal:"
-                                        handleChange={sleepChange} />
+                                        changeHandler={handleSleepChange} />
                                     <h3>{sleepValue} hours</h3>
                                     <button type="button" className="btn btn-primary btn">Set Goal</button>
                                 </form>
@@ -94,13 +100,13 @@ const UserMainSection = () => {
                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 <form>
                                     <Slider
-                                        value={8}
-                                        min={1}
-                                        max={12}
-                                        step={1}
-                                        label="Set Sleep Goal:"
-                                        handleChange={stepChange} />
-                                    <h3>{stepValue} hours</h3>
+                                        value={stepValue}
+                                        min={500}
+                                        max={20000}
+                                        step={500}
+                                        label="Set Steps Goal:"
+                                        changeHandler={handleStepChange} />
+                                    <h3>{stepValue} steps</h3>
                                     <button type="button" className="btn btn-primary btn">Set Goal</button>
                                 </form>
                             </div>
@@ -114,13 +120,13 @@ const UserMainSection = () => {
                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p>
                                 <form>
                                     <Slider
-                                        value={8}
-                                        min={1}
-                                        max={12}
-                                        step={1}
-                                        label="Set Sleep Goal:"
-                                        handleChange={calChange} />
-                                    <h3>{calValue} hours</h3>
+                                        value={calValue}
+                                        min={1000}
+                                        max={6000}
+                                        step={100}
+                                        label="Set Calorie Goal:"
+                                        changeHandler={handleCalChange} />
+                                    <h3>{calValue} calories</h3>
                                     <button type="button" className="btn btn-primary btn">Set Goal</button>
                                 </form>
                             </div>
