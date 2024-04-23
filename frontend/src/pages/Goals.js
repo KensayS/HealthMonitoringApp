@@ -70,10 +70,10 @@ const UserMainSection = () => {
                     <div className="col">
                         <div className="card shadow-lg h-100">
                             <img src="/moon.png" className="card-img-top" alt="Sleep Goals Icon"></img>
-                            <div className="card-body">
+                            <div className="card-body d-flex flex-column">
                                 <h2 className="card-title goal-title">Sleep Goals</h2>
                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <form>
+                                <div className="mt-auto d-flex flex-column">
                                     <Slider
                                         value={sleepValue}
                                         min={1}
@@ -82,18 +82,18 @@ const UserMainSection = () => {
                                         label="Set Sleep Goal:"
                                         changeHandler={handleSleepChange} />
                                     <h3>{sleepValue} hours</h3>
-                                    <button type="button" className="btn btn-primary btn">Set Goal</button>
-                                </form>
+                                    <button type="button" className="btn btn-primary btn justify-content-center">Set Goal</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="col">
                         <div className="card shadow-lg h-100">
                             <img src="/Steps.png" className="card-img-top" alt="Steps Goals Icon"></img>
-                            <div className="card-body">
+                            <div className="card-body d-flex flex-column">
                                 <h2 className="card-title goal-title">Step Goals</h2>
                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <form>
+                                <div className="mt-auto d-flex flex-column">
                                     <Slider
                                         value={stepValue}
                                         min={500}
@@ -102,18 +102,18 @@ const UserMainSection = () => {
                                         label="Set Steps Goal:"
                                         changeHandler={handleStepChange} />
                                     <h3>{stepValue} steps</h3>
-                                    <button type="button" className="btn btn-primary btn">Set Goal</button>
-                                </form>
+                                    <button type="button" className="btn btn-primary btn justify-content-center">Set Goal</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="col">
                         <div className="card shadow-lg h-100">
                             <img src="/fire.png" className="card-img-top" alt="Calorie Goals Icon"></img>
-                            <div className="card-body">
+                            <div className="card-body d-flex flex-column">
                                 <h2 className="card-title goal-title">Calorie Goals</h2>
                                 <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p>
-                                <form>
+                                <div className="mt-auto d-flex flex-column ">
                                     <Slider
                                         value={calValue}
                                         min={1000}
@@ -122,8 +122,8 @@ const UserMainSection = () => {
                                         label="Set Calorie Goal:"
                                         changeHandler={handleCalChange} />
                                     <h3>{calValue} calories</h3>
-                                    <button type="button" className="btn btn-primary btn">Set Goal</button>
-                                </form>
+                                    <button type="button" className="btn btn-primary btn justify-content-center">Set Goal</button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -56,3 +56,17 @@ main {
 h2.goal-title {
   font-size: 3rem;
 }
+
+div.flexbox{
+  display: flex;
+  flex-direction: column;
+}
+
+div.flex{
+  flex-grow: 1;
+  
+}
+
+div.bottom{
+  align-items: flex-end;
+}
