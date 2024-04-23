@@ -13,6 +13,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [type, setType] = useState(""); // default to "User"
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -29,7 +30,7 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Update the user profile with the account type
-        updateProfile(userCredential.user, { displayName: type })
+        updateProfile(userCredential.user, { displayName: `${type}:${userName}` })
           .then(() => {
             console.log(userCredential);
             navigate('/home');
@@ -54,6 +55,17 @@ const Register = () => {
           <div className="form-title">
           <h1>Create Account</h1>
       </div>
+      <div className="input-cluster">
+            <label for="userName" className="form-label">Username</label>
+            <input
+              type="text"
+              id="userName"
+              class="form-control"
+              placeholder="Enter your username"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            ></input>
+          </div>
           <div className="input-cluster">
             <label for="email" className="form-label">Email Address</label>
             <input

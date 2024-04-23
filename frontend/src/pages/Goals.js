@@ -11,11 +11,15 @@ const Goals = () => {
     const auth = getAuth(app);
 
     const [accountType, setAccountType] = useState(null);
+    const [userName, setUserName] = useState("");
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                setAccountType(user.displayName); // assuming displayName is used to store account type
+                const [accountType, userName] = user.displayName.split(':'); //splits the display name into two parameters... accountType(so coach or user account type)
+                                                                            // or userName, so the users' username they created at login
+                setAccountType(accountType);  
+                setUserName(userName);
             }
         });
 
@@ -25,12 +29,12 @@ const Goals = () => {
     return (
         <div className="fitbit-analyzer-container">
             <Nav />
-            {accountType === 'Coach' ? <CoachMainSection /> : <UserMainSection />}
+            {accountType === 'Coach' ?<CoachMainSection userName={userName} /> : <UserMainSection userName={userName} />}
         </div>
     );
 };
 
-const CoachMainSection = () => {
+const CoachMainSection = ({userName}) => {
 
     return (
         <main className="">
@@ -43,7 +47,7 @@ const CoachMainSection = () => {
     );
 };
 
-const UserMainSection = () => {
+const UserMainSection = ({userName}) => {
     const [sleepValue, setSleepValue] = useState(8)
     const [stepValue, setStepValue] = useState(5000)
     const [calValue, setCalValue] = useState(2000)
@@ -64,7 +68,7 @@ const UserMainSection = () => {
         <main className="">
             <div className="main-content">
                 <div className="align-items-center text-center">
-                    <h1 className="welcome-title">Goals</h1>
+                    <h1 className="welcome-title">{userName}'s Goals</h1>
                 </div>
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     <div className="col">
