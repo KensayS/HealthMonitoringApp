@@ -63,3 +63,9 @@ h2.goal-title {
   padding-bottom: 0.3rem;
   color: #11175D;
 }
+
+.graph-cover{
+  background: rgb(230, 234, 238);;
+  border-radius: 1%;
+  
+}
