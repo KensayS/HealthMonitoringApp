@@ -6,6 +6,8 @@ import './main.css';
 import Nav from '../components/navbar'
 import Slider from '../components/slider'
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import FitbitDataComponent from '../fitbit/FitbitDataComponent';
+import { useFitbitAuth } from '../fitbit/fitbitAuth';
 
 const Goals = () => {
     const app = initializeApp(firebaseConfig);
@@ -69,7 +71,6 @@ const CoachMainSection = () => {
     );
 };
 
-
 const UserMainSection = ({userName}) => {
     const [sleepValue, setSleepValue] = useState(8)
     const [stepValue, setStepValue] = useState(5000)
@@ -77,6 +78,31 @@ const UserMainSection = ({userName}) => {
     const [sleepDenom, setSleepDenom]= useState(8)
     const [stepDenom, setStepDenom] = useState(5000)
     const [calDenom, setCalDenom] = useState(2000)
+    const [sleepCurr, setSleepCurr] = useState(0)
+    const [stepCurr, setStepCurr] = useState(0)
+    const [calCurr, setCalCurr] = useState(0)
+
+    const accessToken = useFitbitAuth();
+    useEffect(() => {
+        if (accessToken) {
+            const { getAllActivities, getAllSleep } = FitbitDataComponent({ accessToken });
+            const fetchActivities = async () => {
+                try {
+                    const activitiesData = await getAllActivities();
+                    const sleepData = await getAllSleep();
+                    setCalCurr(activitiesData.summary.caloriesOut)
+                    setStepCurr(activitiesData.summary.steps)
+                    setSleepCurr(sleepData.summary.totalMinutesAsleep)
+                    console.log(activitiesData)
+                    console.log(sleepData)
+                } catch (error) {
+                    console.error('Error fetching activities:', error);
+                }
+            };
+
+            fetchActivities();
+        }
+    }, [accessToken]);
 
     function handleSleepChange (event) {
         setSleepValue(parseInt(event.target.value))
@@ -116,7 +142,7 @@ const UserMainSection = ({userName}) => {
                                 <h2 className="card-title goal-title">Sleep Goals</h2>
                                 {/* <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> */}
                                 <div className="mt-auto d-flex flex-column">
-                                    <h3 className="text-center range-visual">0h 0m / {sleepDenom}h</h3>
+                                    <h3 className="text-center range-visual">{sleepCurr} min / {sleepDenom}h</h3>
                                     <Slider
                                         value={sleepValue}
                                         min={1}
@@ -137,7 +163,7 @@ const UserMainSection = ({userName}) => {
                                 <h2 className="card-title goal-title">Step Goals</h2>
                                 {/* <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> */}
                                 <div className="mt-auto d-flex flex-column">
-                                    <h3 className="text-center range-visual">0 steps / {stepDenom} steps</h3>
+                                    <h3 className="text-center range-visual">{stepCurr} steps / {stepDenom} steps</h3>
                                     <Slider
                                         value={stepValue}
                                         min={500}
@@ -158,7 +184,7 @@ const UserMainSection = ({userName}) => {
                                 <h2 className="card-title goal-title">Calorie Goals</h2>
                                 {/* <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p> */}
                                 <div className="mt-auto d-flex flex-column ">
-                                    <h3 className="text-center range-visual">0 cal / {calDenom} cal</h3>
+                                    <h3 className="text-center range-visual">{calCurr} cal / {calDenom} cal</h3>
                                     <Slider
                                         value={calValue}
                                         min={1000}
