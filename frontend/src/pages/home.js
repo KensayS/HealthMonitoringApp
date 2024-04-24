@@ -42,17 +42,23 @@ const Home = () => {
 const UserHome = ({ userName }) => {
     const accessToken = useFitbitAuth();
     const [stepsData, setStepsData] = useState([]);
+    const [CaloriesData, setCaloriesData] = useState([]);
     const [loading, setLoading] = useState(true); // Add this line
 
     useEffect(() => {
         if (accessToken) {
             const { getWeekStep } = FitbitDataComponent({ accessToken });
+            const { getWeekCalories } = FitbitDataComponent({ accessToken });
             const fetchActivities = async () => {
                 try {
                     const weekStep = await getWeekStep();
+                    const weekCalories = await getWeekCalories();
                     console.log(weekStep)
+                    console.log(weekCalories);
                     console.log('Activities Steps:', weekStep["activities-steps"]); // Add this line
+                    console.log('Activities Calories:', weekCalories["activities-calories"]);
                     setStepsData(weekStep["activities-steps"]);
+                    setCaloriesData(weekCalories["activities-calories"])
                     setLoading(false);
                 } catch (error) {
                     console.error('Error fetching activities:', error);
@@ -85,7 +91,7 @@ const UserHome = ({ userName }) => {
                             <Graph data={stepsData} />
                         </div>
                         <div class="col col-md-6 graph-cover">
-                            Column
+                            <Graph data={CaloriesData} />
                         </div>
                     </div>
                 </div>
@@ -93,6 +99,7 @@ const UserHome = ({ userName }) => {
                 
             </div>
             <pre>{stepsData ? JSON.stringify(stepsData, null, 2) : 'Loading data...'}</pre>
+            <pre>{CaloriesData ? JSON.stringify(CaloriesData, null, 2) : 'Loading data...'}</pre>
         </main>
 
     );
