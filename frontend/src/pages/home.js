@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import './main.css';
-import '../components/navbar.css'
+import '../components/navbar.css';
+import Graph from '../components/graph.js';
 import firebaseConfig from "../firebaseBackend/firebaseConfig";
 import { initializeApp } from "firebase/app";
 import BackendDemo from './BackendDemo';
-import Nav from '../components/navbar'
+import Nav from '../components/navbar';
 import FitbitDataComponent from '../fitbit/FitbitDataComponent';
 import { useFitbitAuth } from '../fitbit/fitbitAuth';
 
@@ -41,6 +42,7 @@ const Home = () => {
 
 const UserHome = ({ userName }) => {
     const accessToken = useFitbitAuth();
+    const [stepsData, setStepsData] = useState([]);
     useEffect(() => {
         if (accessToken) {
             const { getWeekStep } = FitbitDataComponent({ accessToken });
@@ -48,6 +50,8 @@ const UserHome = ({ userName }) => {
                 try {
                     const weekStep = await getWeekStep(); 
                     console.log(weekStep)
+                    console.log('Activities Steps:', weekStep["activities-steps"]); // Add this line
+                    setStepsData(weekStep["activities-steps"]);
                 } catch (error) {
                     console.error('Error fetching activities:', error);
                 }
@@ -70,7 +74,10 @@ const UserHome = ({ userName }) => {
                     </div>
                 </div>
             </div>
-            <div className="fitbit-surround"></div>
+            <div className="fitbit-surround">
+                {/* <Graph data={stepsData} /> */}
+            </div>
+            <pre>{stepsData ? JSON.stringify(stepsData, null, 2) : 'Loading data...'}</pre>
         </main>
 
     );
@@ -89,7 +96,9 @@ const CoachHome = ({ userName }) => {
                     </div>
                 </div>
             </div>
-            <div className="fitbit-surround"></div>
+            <div className="fitbit-surround">
+                
+            </div>
         </main>
 
     );

@@ -83,7 +83,7 @@ function BackendDemo() {
 
     return (
         <div>
-            <h1>Personal Data</h1>
+            {/* <h1>Personal Data</h1>
             <p><b>Firebase Auth UID: </b> {firebaseUID}</p>
             <p><b>FitBit UID: </b> {fitbitUID}</p>
             <p><b>User Email: </b> {userEmail}</p>
@@ -92,7 +92,7 @@ function BackendDemo() {
             <pre>{allData ? JSON.stringify(allData, null, 2) : 'Loading data...'}</pre>
             <hr />
             <b>Data From FireStore UID {"(should be your data)"}: </b>
-            <pre>{UIDData ? JSON.stringify(UIDData, null, 2) : 'Loading data...'}</pre>
+            <pre>{UIDData ? JSON.stringify(UIDData, null, 2) : 'Loading data...'}</pre> */}
         </div>
     );
 }
