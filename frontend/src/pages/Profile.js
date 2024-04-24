@@ -2,36 +2,58 @@ import React, { useState, useEffect } from 'react';
 import '../pages/form.css';
 import Nav from '../components/navbar';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, updatePassword } from "firebase/auth";
+import { getAuth, updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 
 const Profile = () => {
     const [currentEmail, setCurrentEmail] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [error, setError] = useState("");  // To display error messages
     const [success, setSuccess] = useState("");  // To display success message
+    const [currentPassword, setCurrentPassword] = useState("");
+    const [newUserName, setNewUserName] = useState("");
 
     const navigate = useNavigate();
+    const auth = getAuth(); 
 
     useEffect(() => {
         const auth = getAuth();
         const user = auth.currentUser;
         if (user) {
             setCurrentEmail(user.email); // Set the user's email as the initial value
+            setNewUserName(user.displayName); // Set the user's display name as the initial value
         }
     }, []);
 
     const handleNewPasswordChange = (e) => setNewPassword(e.target.value);
+    const handleCurrentPasswordChange = (e) => setCurrentPassword(e.target.value);
+    const handleNewUserNameChange = (e) => setNewUserName(e.target.value);
+
+    const updateUserNameInFirebase = async () => {
+        const user = auth.currentUser;
+        const credential = EmailAuthProvider.credential(user.email, currentPassword);
+
+        try {
+            await reauthenticateWithCredential(user, credential);
+            await updateProfile(user, { displayName: newUserName });
+            setSuccess("Username updated successfully!");
+            setTimeout(() => setSuccess(""), 3000);  // Reset success message after 3 seconds
+        } catch (error) {
+            setError("Failed to update username: " + error.message);
+            setTimeout(() => setError(""), 3000);  // Reset error message after 3 seconds
+        }
+    };
 
     const updatePasswordInFirebase = async () => {
-        const auth = getAuth();
         const user = auth.currentUser;
+        const credential = EmailAuthProvider.credential(user.email, currentPassword);
         try {
-            await updatePassword(user, newPassword);
+            await reauthenticateWithCredential(user, credential);
+            await updatePassword(user, newPassword);  // Update the password here
             setSuccess("Password updated successfully!");
-            setTimeout(() => setSuccess(""), 5000);  // Reset success message after 5 seconds
+            setTimeout(() => setSuccess(""), 3000);  // Reset success message after 3 seconds
         } catch (error) {
             setError("Failed to update password: " + error.message);
-            setTimeout(() => setError(""), 5000);  // Reset error message after 5 seconds
+            setTimeout(() => setError(""), 3000);  // Reset error message after 3 seconds
         }
     };
 
@@ -40,9 +62,27 @@ const Profile = () => {
         setError("");
         setSuccess("");
 
+        let isUsernameUpdated = false;
+        let isPasswordUpdated = false;
+
+        if (newUserName) {
+            await updateUserNameInFirebase();
+            isUsernameUpdated = true;
+        }
+    
         if (newPassword) {
             await updatePasswordInFirebase();
+            isPasswordUpdated = true;
         }
+    
+        if (isUsernameUpdated && isPasswordUpdated) {
+            setSuccess("Username and password updated successfully!");
+        } else if (isUsernameUpdated) {
+            setSuccess("Username updated successfully!");
+        } else if (isPasswordUpdated) {
+            setSuccess("Password updated successfully!");
+        }
+
     };
 
     return (
@@ -65,6 +105,17 @@ const Profile = () => {
                             />
                         </div>
                         <div className="input-cluster">
+                            <label htmlFor="new-username" className="form-label">New Username</label>
+                            <input
+                                type="text"
+                                id="new-username"
+                                className="form-control"
+                                placeholder="Enter new username"
+                                value={newUserName}
+                                onChange={handleNewUserNameChange}
+                            />
+                        </div>
+                        <div className="input-cluster">
                             <label htmlFor="new-password" className="form-label">New Password</label>
                             <input
                                 type="password"
@@ -73,6 +124,17 @@ const Profile = () => {
                                 placeholder="Enter new password"
                                 value={newPassword}
                                 onChange={handleNewPasswordChange}
+                            />
+                        </div>
+                        <div className="input-cluster">
+                            <label htmlFor="current-password" className="form-label">Current Password</label>
+                            <input
+                                type="password"
+                                id="current-password"
+                                className="form-control"
+                                placeholder="Enter current password"
+                                value={currentPassword}
+                                onChange={handleCurrentPasswordChange}
                             />
                         </div>
                         {error && <div className="alert alert-danger">{error}</div>}
