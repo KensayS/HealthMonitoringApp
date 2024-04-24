@@ -8,7 +8,7 @@ Chart.register(CategoryScale)
 // Chart.register(...registerables);
 
 
-const Graph = ({ data }) => {
+const Graph = ({ data, label }) => {
     // If data is not an array, return null
     if (!Array.isArray(data)) {
         return null;
@@ -18,16 +18,25 @@ const Graph = ({ data }) => {
         labels: data.map((item) => item.dateTime),
         datasets: [
             {
-                label: 'Steps',
+                label: label,
                 data: data.map((item) => Number(item.value)),
-                backgroundColor: 'rgb(75,192,192)',
+                backgroundColor: 'rgb(255,79,79)',
+                
             },
         ],
     };
 
+    const options = {
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+      };
+
     console.log('Chart Data:', chartData); // Debugging line
 
-    return <Bar data={chartData} />;
+    return <Bar data={chartData} options={options}/>;
 };
 
 export default Graph;

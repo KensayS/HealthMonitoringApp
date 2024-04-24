@@ -78,21 +78,19 @@ const UserHome = ({ userName }) => {
                     </div>
                 </div>
             </div>
-            <div className="fitbit-surround">
-                <div class="container text-center">
-                    <div class="row gx-4  align-items-center justify-content-center">
-                        <div class="col col-md-6 graph-cover" >
-                            <Graph data={stepsData} />
+            <div className="fitbit-surround rounded-top-5 align-items-center">
+                <div className="container-fluid grid text-center column-gap-5">
+                    <div className="row gx-4">
+                        <div className="col graph-cover my-5 mx-5 p-3 rounded-4" >
+                            <h2 className="chart-title">Steps</h2>
+                            <Graph className = "chart" data={stepsData} label='Steps'/>
                         </div>
-                        <div class="col col-md-6 graph-cover">
+                        <div className="col graph-cover my-5 mx-5 p-3 rounded-4">
                             Column
                         </div>
                     </div>
-                </div>
-
-                
+                </div>           
             </div>
-            <pre>{stepsData ? JSON.stringify(stepsData, null, 2) : 'Loading data...'}</pre>
         </main>
 
     );
