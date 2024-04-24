@@ -65,7 +65,7 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         ></input>
                     </div>
-                    <div className="d-grid gap-2 shadow-lg">
+                    <div className="d-grid gap-2 button-prop shadow-lg">
                         <button type="submit" className="btn btn-primary" >Log In</button>
                     </div>
 

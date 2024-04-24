@@ -47,6 +47,9 @@ const UserMainSection = () => {
     const [sleepValue, setSleepValue] = useState(8)
     const [stepValue, setStepValue] = useState(5000)
     const [calValue, setCalValue] = useState(2000)
+    const [sleepDenom, setSleepDenom]= useState(8)
+    const [stepDenom, setStepDenom] = useState(5000)
+    const [calDenom, setCalDenom] = useState(2000)
 
     function handleSleepChange (event) {
         setSleepValue(parseInt(event.target.value))
@@ -58,6 +61,18 @@ const UserMainSection = () => {
 
     function handleCalChange (event) {
         setCalValue(parseInt(event.target.value));
+    };
+
+    function handleSleepDenom () {
+        setSleepDenom(sleepValue)
+    };
+
+    function handleStepDenom (event) {
+        setStepDenom(parseInt(stepValue));
+    };
+
+    function handleCalDenom (event) {
+        setCalDenom(parseInt(calValue));
     };
 
     return (
@@ -72,8 +87,9 @@ const UserMainSection = () => {
                             <img src="/moon.png" className="card-img-top" alt="Sleep Goals Icon"></img>
                             <div className="card-body d-flex flex-column">
                                 <h2 className="card-title goal-title">Sleep Goals</h2>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                {/* <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> */}
                                 <div className="mt-auto d-flex flex-column">
+                                    <h3 className="text-center range-visual">0h 0m / {sleepDenom}h</h3>
                                     <Slider
                                         value={sleepValue}
                                         min={1}
@@ -82,7 +98,7 @@ const UserMainSection = () => {
                                         label="Set Sleep Goal:"
                                         changeHandler={handleSleepChange} />
                                     <h3 className="text-center range-visual">{sleepValue} hours</h3>
-                                    <button type="button" className="btn btn-primary btn justify-content-center">Set Goal</button>
+                                    <button type="button" className="btn btn-primary btn justify-content-center" onClick={handleSleepDenom}>Set Goal</button>
                                 </div>
                             </div>
                         </div>
@@ -92,8 +108,9 @@ const UserMainSection = () => {
                             <img src="/Steps.png" className="card-img-top" alt="Steps Goals Icon"></img>
                             <div className="card-body d-flex flex-column">
                                 <h2 className="card-title goal-title">Step Goals</h2>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                {/* <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> */}
                                 <div className="mt-auto d-flex flex-column">
+                                    <h3 className="text-center range-visual">0 steps / {stepDenom} steps</h3>
                                     <Slider
                                         value={stepValue}
                                         min={500}
@@ -102,7 +119,7 @@ const UserMainSection = () => {
                                         label="Set Steps Goal:"
                                         changeHandler={handleStepChange} />
                                     <h3 className="text-center range-visual">{stepValue} steps</h3>
-                                    <button type="button" className="btn btn-primary btn justify-content-center">Set Goal</button>
+                                    <button type="button" className="btn btn-primary btn justify-content-center" onClick={handleStepDenom}>Set Goal</button>
                                 </div>
                             </div>
                         </div>
@@ -112,8 +129,9 @@ const UserMainSection = () => {
                             <img src="/fire.png" className="card-img-top" alt="Calorie Goals Icon"></img>
                             <div className="card-body d-flex flex-column">
                                 <h2 className="card-title goal-title">Calorie Goals</h2>
-                                <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p>
+                                {/* <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p> */}
                                 <div className="mt-auto d-flex flex-column ">
+                                    <h3 className="text-center range-visual">0 cal / {calDenom} cal</h3>
                                     <Slider
                                         value={calValue}
                                         min={1000}
@@ -122,7 +140,7 @@ const UserMainSection = () => {
                                         label="Set Calorie Goal:"
                                         changeHandler={handleCalChange} />
                                     <h3 className="text-center range-visual">{calValue} calories</h3>
-                                    <button type="button" className="btn btn-primary btn justify-content-center">Set Goal</button>
+                                    <button type="button" className="btn btn-primary btn justify-content-center" onClick={handleCalDenom}>Set Goal</button>
                                 </div>
                             </div>
                         </div>
