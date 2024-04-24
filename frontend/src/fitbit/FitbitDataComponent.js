@@ -74,26 +74,55 @@ const FitbitDataComponent = ({ accessToken }) => {
     };
 
     const getWeekStep = async () => {
-      const endpoint = `https://api.fitbit.com/1/user/-/activities/steps/date/2024-04-16/2024-04-23.json`;
+      const today = new Date();
+      const oneWeekAgo = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+      
+      const formatDate = (date) => {
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed in JS
+          const day = String(date.getDate()).padStart(2, '0');
+          
+          return `${year}-${month}-${day}`;
+      };
+      
+      const todayStr = formatDate(today);
+      const oneWeekAgoStr = formatDate(oneWeekAgo);
+      
+      const endpoint = `https://api.fitbit.com/1/user/-/activities/steps/date/${oneWeekAgoStr}/${todayStr}.json`;
       const headers = {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        }
+          headers: {
+              Authorization: `Bearer ${accessToken}`,
+          }
       };
       
       return await APIRequest(endpoint, headers);
-    };
+  };
 
-    const getWeekCalories = async () => {
-      const endpoint = `https://api.fitbit.com/1/user/-/activities/calories/date/2024-04-16/2024-04-23.json`;
-      const headers = {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        }
-      };
-      
-      return await APIRequest(endpoint, headers);
+  const getWeekCalories = async () => {
+    const today = new Date();
+    const oneWeekAgo = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+    
+    const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed in JS
+        const day = String(date.getDate()).padStart(2, '0');
+        
+        return `${year}-${month}-${day}`;
     };
+    
+    const todayStr = formatDate(today);
+    const oneWeekAgoStr = formatDate(oneWeekAgo);
+    
+    const endpoint = `https://api.fitbit.com/1/user/-/activities/calories/date/${oneWeekAgoStr}/${todayStr}.json`;
+    const headers = {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        }
+    };
+    
+    return await APIRequest(endpoint, headers);
+};
+
   
     return {
       getProfile,
