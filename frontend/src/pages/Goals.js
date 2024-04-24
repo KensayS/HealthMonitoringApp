@@ -5,6 +5,7 @@ import { initializeApp } from "firebase/app";
 import './main.css';
 import Nav from '../components/navbar'
 import Slider from '../components/slider'
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const Goals = () => {
     const app = initializeApp(firebaseConfig);
@@ -34,18 +35,40 @@ const Goals = () => {
     );
 };
 
-const CoachMainSection = ({userName}) => {
+const CoachMainSection = () => {
+    const [firebaseUserIds, setFirebaseUserIds] = useState([]);
+
+    useEffect(() => {
+        const fetchFirebaseUserIds = async () => {
+            const db = getFirestore();
+            const usersSnapshot = await getDocs(collection(db, "users"));
+            const userIds = usersSnapshot.docs.map(doc => doc.id);
+            setFirebaseUserIds(userIds);
+        };
+
+        fetchFirebaseUserIds();
+    }, []);
+
+    const excludedIds = ["BXRSBB", "initial-blank", "BZBPFB"];
 
     return (
         <main className="">
             <div className="main-content">
                 <div className="align-items-center text-center">
-                    <h1 className="welcome-title">Coach Section with Nothing.</h1>
+                    <h1 className="welcome-title">Coach Section.</h1>
+                    {firebaseUserIds
+                        .filter(id => !excludedIds.includes(id))
+                        .map(id => (
+                        <div key={id}>
+                            <p>User ID: {id}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </main>
     );
 };
+
 
 const UserMainSection = ({userName}) => {
     const [sleepValue, setSleepValue] = useState(8)
