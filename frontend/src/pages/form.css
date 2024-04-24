@@ -42,3 +42,7 @@ label {
 #white-back{
     background-color: rgb(230, 234, 238);
 }
+
+#radio-select{
+    font-size: 0.9rem;
+}

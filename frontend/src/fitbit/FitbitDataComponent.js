@@ -72,13 +72,25 @@ const FitbitDataComponent = ({ accessToken }) => {
       
       return await APIRequest(endpoint, headers);
     };
+
+    const getWeekStep = async () => {
+      const endpoint = `https://api.fitbit.com/1/user/-/activities/steps/date/2024-04-16/2024-04-23.json`;
+      const headers = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        }
+      };
+      
+      return await APIRequest(endpoint, headers);
+    };
   
     return {
       getProfile,
       getUID,
       getHeartRateTimeSeries,
       getAllActivities,
-      getAllSleep
+      getAllSleep,
+      getWeekStep
     };
   };
   

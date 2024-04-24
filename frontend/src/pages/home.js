@@ -6,6 +6,8 @@ import firebaseConfig from "../firebaseBackend/firebaseConfig";
 import { initializeApp } from "firebase/app";
 import BackendDemo from './BackendDemo';
 import Nav from '../components/navbar'
+import FitbitDataComponent from '../fitbit/FitbitDataComponent';
+import { useFitbitAuth } from '../fitbit/fitbitAuth';
 
 
 const Home = () => {
@@ -38,6 +40,24 @@ const Home = () => {
 };
 
 const UserHome = ({ userName }) => {
+    const accessToken = useFitbitAuth();
+    useEffect(() => {
+        if (accessToken) {
+            const { getWeekStep } = FitbitDataComponent({ accessToken });
+            const fetchActivities = async () => {
+                try {
+                    const weekStep = await getWeekStep(); 
+                    console.log(weekStep)
+                } catch (error) {
+                    console.error('Error fetching activities:', error);
+                }
+            };
+
+            fetchActivities();
+        }
+    }, [accessToken]);
+
+
     return (
         <main className="">
             <div className="main-content" >

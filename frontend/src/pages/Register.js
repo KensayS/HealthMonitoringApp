@@ -53,9 +53,9 @@ const Register = () => {
       <div className="content" >
         <form onSubmit={registerAccount}>
           <div className="form-title">
-          <h1>Create Account</h1>
-      </div>
-      <div className="input-cluster">
+            <h1>Create Account</h1>
+          </div>
+          <div className="input-cluster">
             <label for="userName" className="form-label">Username</label>
             <input
               type="text"
@@ -88,19 +88,19 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </div>
-
-          <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioCoach" value="Coach" onChange={handleTypeChange} />
-        <label class="form-check-label" for="flexRadioCoach">
-          Sign Up as Coach
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioUser" value="User" checked={type === "User"} onChange={handleTypeChange} />
-        <label class="form-check-label" for="flexRadioUser">
-          Sign Up as User
-        </label>
-      </div>
+          
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioCoach" value="Coach" onChange={handleTypeChange} />
+            <label class="form-check-label" for="flexRadioCoach" id="radio-select">
+              Sign Up as Coach
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioUser" value="User" checked={type === "User"} onChange={handleTypeChange} />
+            <label class="form-check-label" for="flexRadioUser" id="radio-select">
+              Sign Up as User
+            </label>
+          </div>
 
           <div className="d-grid gap-2 button-prop shadow-lg">
             <button type="submit" className="btn btn-primary" >Sign Up</button>

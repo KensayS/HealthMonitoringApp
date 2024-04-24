@@ -109,7 +109,7 @@ const Profile = () => {
                                 type="password"
                                 id="current-password"
                                 className="form-control"
-                                placeholder="Must enter to change anything"
+                                placeholder="Required"
                                 value={currentPassword}
                                 onChange={handleCurrentPasswordChange}
                             />
