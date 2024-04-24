@@ -12,11 +12,15 @@ const Home = () => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const [accountType, setAccountType] = useState(null);
+    const [userName, setUserName] = useState("");
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                setAccountType(user.displayName); // assuming displayName is used to store account type
+                const [accountType, userName] = user.displayName.split(':'); //splits the display name into two parameters... accountType(so coach or user account type)
+                                                                            // or userName, so the users' username they created at login
+                setAccountType(accountType);  
+                setUserName(userName);
             }
         });
 
@@ -27,13 +31,13 @@ const Home = () => {
     return (
         <div className="fitbit-analyzer-container">
             <Nav />
-            {accountType === 'Coach' ? <CoachHome /> : <UserHome />}
+            {accountType === 'Coach' ? <CoachHome userName={userName} /> : <UserHome userName={userName} />}
             <BackendDemo />
         </div>
     );
 };
 
-const UserHome = () => {
+const UserHome = ({ userName }) => {
     return (
         <main className="">
             <div className="main-content" >
@@ -42,7 +46,7 @@ const UserHome = () => {
                         <h1 className="welcome-title">Homepage</h1>
                     </div>
                     <div className="col-12">
-                        <p className="welcome-text">Welcome to your personal homepage! Here you can access your personalized health graphs and charts, taken from your Fitbit Inspire 2!</p>
+                        <p className="welcome-text">Welcome {userName}! This is your personal homepage! Here you can access your personalized health graphs and charts, taken from your Fitbit Inspire 2!</p>
                     </div>
                 </div>
             </div>
@@ -52,7 +56,7 @@ const UserHome = () => {
     );
 };
 
-const CoachHome = () => {
+const CoachHome = ({ userName }) => {
     return (
         <main className="">
             <div className="main-content" >
@@ -61,7 +65,7 @@ const CoachHome = () => {
                         <h1 className="welcome-title">Homepage</h1>
                     </div>
                     <div className="col-12">
-                        <p className="welcome-text">Welcome, Coach! This is your coaching homepage. Here you can access your clients' personalized health graphs and charts, taken from their Fitbit Inspire 2!</p>
+                        <p className="welcome-text">Welcome, {userName}! This is your coaching homepage. Here you can access your clients' personalized health graphs and charts, taken from their Fitbit Inspire 2!</p>
                     </div>
                 </div>
             </div>
