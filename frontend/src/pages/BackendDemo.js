@@ -20,12 +20,11 @@ function BackendDemo() {
 
     // Use the useFitbitAuth hook to get the access token
     const accessToken = useFitbitAuth();
-
     useEffect(() => {
         // Check if accessToken is available and fetch user data only if it's available
         if (accessToken) {
             const fetchData = async () => {
-                const { getProfile, getUID, getHeartRateTimeSeries } = FitbitDataComponent({ accessToken });
+                const { getProfile, getUID, getHeartRateTimeSeries, getAllActivities, getAllSleep  } = FitbitDataComponent({ accessToken });
     
                 try {
                     const auth = getAuth();
@@ -38,19 +37,14 @@ function BackendDemo() {
                             // set FitBit UID state
                             const FBUID = await getUID();
                             setFitbitUID(FBUID);
-    
-                            const sampleData = {
-                                heartrate: 123,
-                                test: "test string",
-                            };
+
 
                             // set doc ID with Fitbit UID to getProfile and sampleData
                             await addData(FBUID, await getProfile());
-                            await addData(FBUID, sampleData);
                             
                             // set doc ID with Firebase UID to getProfile
                             await addData(user.uid, await getProfile());
-                            await addData(user.uid, await getHeartRateTimeSeries('2024-02-02', '1d'));
+                            await addData(user.uid, await getHeartRateTimeSeries());
     
                             getDataByDocID(user.uid).then((data) => {
                                 console.log('Data by UID:', data);
@@ -89,17 +83,16 @@ function BackendDemo() {
 
     return (
         <div>
-            <h1>Personal Data</h1>
+            {/* <h1>Personal Data</h1>
             <p><b>Firebase Auth UID: </b> {firebaseUID}</p>
             <p><b>FitBit UID: </b> {fitbitUID}</p>
             <p><b>User Email: </b> {userEmail}</p>
-            <p><Link to="/login">Log in</Link> <Link to="/register">Register</Link> <Link to="/logout">Logout</Link></p>
             <hr />
             <b>All data from collection: </b>
             <pre>{allData ? JSON.stringify(allData, null, 2) : 'Loading data...'}</pre>
             <hr />
             <b>Data From FireStore UID {"(should be your data)"}: </b>
-            <pre>{UIDData ? JSON.stringify(UIDData, null, 2) : 'Loading data...'}</pre>
+            <pre>{UIDData ? JSON.stringify(UIDData, null, 2) : 'Loading data...'}</pre> */}
         </div>
     );
 }

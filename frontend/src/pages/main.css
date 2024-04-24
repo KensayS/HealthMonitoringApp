@@ -2,23 +2,14 @@
   font-family: 'Nunito';
 }
 
-.navbar-custom {
-  background: #11175D !important;
-  font-size: 1.5rem;
-}
 
-a.navbar-brand {
+/* Navbar stuff */
 
-  padding-left: 1%;
-  font-size: 2rem;
-  font-weight: 500;
-}
 
-a.nav-link {
-  padding-right: 3%;
-}
+/* end navbar stuff */
 
 .main-content {
+  
   padding: 2em;
   padding-top: 4rem;
 }
@@ -41,6 +32,7 @@ a.nav-link {
 
 main {
   padding-top: 5%;
+  height: 100%;
 }
 
 .welcome-image {
@@ -54,9 +46,37 @@ main {
 
 .fitbit-surround {
   background: #11175D;
-  border-radius: 5% 5% 0% 0%;
   width: 100%;
-  height: 50rem;
   padding: 0px;
   margin: 0px;
+}
+
+h2.goal-title {
+  font-size: 3rem;
+}
+
+.range-visual{
+  font-size: 2rem;
+  font-weight: 600;
+  padding-bottom: 0.3rem;
+  color: #11175D;
+}
+
+div.graph-cover{
+  background: rgb(230, 234, 238);;
+  padding: 1rem;
+}
+
+div.chart{
+  width: 100%;
+  height: 100%;
+}
+
+div.container{
+  height: 100%;
+}
+
+h2.chart-title{
+  font-size: 3rem;
+  color: #11175D;
 }

@@ -12,7 +12,7 @@ const FitbitLogout = () => {
 
             // After opening the Fitbit logout URL, redirect the user to the login page of your application.
             navigate('/login');
-        }, 2000);
+        }, 1000);
 
         // Cleanup function to clear the timeout if the component unmounts before the timeout is completed
         return () => clearTimeout(timeoutId);
