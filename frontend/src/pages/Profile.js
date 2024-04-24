@@ -20,7 +20,6 @@ const Profile = () => {
         const user = auth.currentUser;
         if (user) {
             setCurrentEmail(user.email); // Set the user's email as the initial value
-            setNewUserName(user.displayName); // Set the user's display name as the initial value
         }
     }, []);
 
@@ -34,12 +33,12 @@ const Profile = () => {
 
         try {
             await reauthenticateWithCredential(user, credential);
-            await updateProfile(user, { displayName: newUserName });
+            await updateProfile(user, { displayName: "User:" + newUserName });
             setSuccess("Username updated successfully!");
-            setTimeout(() => setSuccess(""), 3000);  // Reset success message after 3 seconds
+            setTimeout(() => setSuccess(""), 2000); 
         } catch (error) {
             setError("Failed to update username: " + error.message);
-            setTimeout(() => setError(""), 3000);  // Reset error message after 3 seconds
+            setTimeout(() => setError(""), 2000);  // Reset error message after green fn
         }
     };
 
@@ -105,6 +104,17 @@ const Profile = () => {
                             />
                         </div>
                         <div className="input-cluster">
+                            <label htmlFor="current-password" className="form-label">Current Password</label>
+                            <input
+                                type="password"
+                                id="current-password"
+                                className="form-control"
+                                placeholder="Must enter to change anything"
+                                value={currentPassword}
+                                onChange={handleCurrentPasswordChange}
+                            />
+                        </div>
+                        <div className="input-cluster">
                             <label htmlFor="new-username" className="form-label">New Username</label>
                             <input
                                 type="text"
@@ -121,20 +131,9 @@ const Profile = () => {
                                 type="password"
                                 id="new-password"
                                 className="form-control"
-                                placeholder="Enter new password"
+                                placeholder="Leave blank if keeping the same password"
                                 value={newPassword}
                                 onChange={handleNewPasswordChange}
-                            />
-                        </div>
-                        <div className="input-cluster">
-                            <label htmlFor="current-password" className="form-label">Current Password</label>
-                            <input
-                                type="password"
-                                id="current-password"
-                                className="form-control"
-                                placeholder="Enter current password"
-                                value={currentPassword}
-                                onChange={handleCurrentPasswordChange}
                             />
                         </div>
                         {error && <div className="alert alert-danger">{error}</div>}
