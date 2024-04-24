@@ -84,8 +84,7 @@ const UserHome = ({ userName }) => {
                     </div>
                 </div>
             </div>
-            <div className="fitbit-surround rounded-top-5 align-items-center">
-                <div className="container-fluid grid text-center column-gap-5">
+            <div className="fitbit-surround rounded-top-5 align-items-center container-fluid grid text-center column-gap-5">
                     <div className="row gx-4">
                         <div className="col graph-cover my-5 mx-5 p-3 rounded-4" >
                             <h2 className="chart-title">Steps</h2>
@@ -95,7 +94,6 @@ const UserHome = ({ userName }) => {
                             <h2 className="chart-title">Calories</h2>
                             <Graph className = "chart" data={CaloriesData} label='Calories'/>
                         </div>
-                    </div>
                 </div>           
             </div>
         </main>
