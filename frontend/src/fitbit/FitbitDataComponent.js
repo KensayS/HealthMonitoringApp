@@ -6,7 +6,6 @@ const FitbitDataComponent = ({ accessToken }) => {
   
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         return data;
       } else {
         console.error('Error fetching Fitbit data');
@@ -30,7 +29,6 @@ const FitbitDataComponent = ({ accessToken }) => {
         const fitbitUserID = profileData.user?.encodedId;
   
         if (fitbitUserID) {
-          console.log('Fitbit User ID:', fitbitUserID);
           return fitbitUserID;
         } else {
           console.error('Fitbit User ID not found in profile data.');
@@ -42,8 +40,8 @@ const FitbitDataComponent = ({ accessToken }) => {
       }
     };
   
-    const getHeartRateTimeSeries = async (date, period) => {
-      const timeSeriesEndpoint = `https://api.fitbit.com/1/user/-/activities/heart/date/${date}/${period}.json`;
+    const getHeartRateTimeSeries = async () => {
+      const timeSeriesEndpoint = `https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json`;
       const timeSeriesHeaders = {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -52,11 +50,35 @@ const FitbitDataComponent = ({ accessToken }) => {
   
       return await APIRequest(timeSeriesEndpoint, timeSeriesHeaders);
     };
+
+    const getAllActivities = async () => {
+      const endpoint = `https://api.fitbit.com//1/user/-/activities/date/today.json`;
+      const headers = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        }
+      };
+      
+      return await APIRequest(endpoint, headers);
+    };
+
+    const getAllSleep = async () => {
+      const endpoint = `https://api.fitbit.com//1.2/user/-/sleep/date/today.json`;
+      const headers = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        }
+      };
+      
+      return await APIRequest(endpoint, headers);
+    };
   
     return {
       getProfile,
       getUID,
       getHeartRateTimeSeries,
+      getAllActivities,
+      getAllSleep
     };
   };
   
