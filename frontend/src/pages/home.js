@@ -41,24 +41,22 @@ const Home = () => {
 
 const UserHome = ({ userName }) => {
     const accessToken = useFitbitAuth();
+    const [stepTime, stepTimespan] = useState(7);
+    const [calTime, calTimespan] = useState(7);
     const [stepsData, setStepsData] = useState([]);
-    const [CaloriesData, setCaloriesData] = useState([]);
-    const [loading, setLoading] = useState(true); // Add this line
+    const [caloriesData, setCaloriesData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (accessToken) {
-            const { getWeekStep } = FitbitDataComponent({ accessToken });
-            const { getWeekCalories } = FitbitDataComponent({ accessToken });
+            const { getStep } = FitbitDataComponent({ accessToken });
+            const { getCalories } = FitbitDataComponent({ accessToken });
             const fetchActivities = async () => {
                 try {
-                    const weekStep = await getWeekStep();
-                    const weekCalories = await getWeekCalories();
-                    console.log(weekStep)
-                    console.log(weekCalories);
-                    console.log('Activities Steps:', weekStep["activities-steps"]); // Add this line
-                    console.log('Activities Calories:', weekCalories["activities-calories"]);
-                    setStepsData(weekStep["activities-steps"]);
-                    setCaloriesData(weekCalories["activities-calories"])
+                    const Step = await getStep(stepTime);
+                    const Calories = await getCalories(calTime);
+                    setStepsData(Step["activities-steps"]);
+                    setCaloriesData(Calories["activities-calories"])
                     setLoading(false);
                 } catch (error) {
                     console.error('Error fetching activities:', error);
@@ -67,7 +65,7 @@ const UserHome = ({ userName }) => {
 
             fetchActivities();
         }
-    }, [accessToken]);
+    }, [accessToken, stepTime, calTime]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -85,16 +83,24 @@ const UserHome = ({ userName }) => {
                 </div>
             </div>
             <div className="fitbit-surround rounded-top-5 align-items-center container-fluid grid text-center column-gap-5">
-                    <div className="row gx-4">
-                        <div className="col graph-cover my-5 mx-5 p-3 rounded-4" >
-                            <h2 className="chart-title">Steps</h2>
-                            <Graph className = "chart" data={stepsData} label='Steps'/>
+                <div className="row gx-4">
+                    <div className="col graph-cover my-5 mx-5 p-3 rounded-4" >
+                        <h2 className="chart-title">Steps</h2>
+                        <div class="btn-group mb-3" role="group" aria-label="Timespan selector steps">
+                            <button type="button" class="btn btn-primary" onClick={() => stepTimespan(7)}>Week</button>
+                            <button type="button" class="btn btn-primary" onClick={() => stepTimespan(30)}>Month</button>
                         </div>
-                        <div className="col graph-cover my-5 mx-5 p-3 rounded-4">
-                            <h2 className="chart-title">Calories</h2>
-                            <Graph className = "chart" data={CaloriesData} label='Calories'/>
+                        <Graph className="chart" data={stepsData} label='Steps' />
+                    </div>
+                    <div className="col graph-cover my-5 mx-5 p-3 rounded-4">
+                        <h2 className="chart-title">Calories</h2>
+                        <div class="btn-group mb-3" role="group" aria-label="Timespan selector calories">
+                            <button type="button" class="btn btn-primary" onClick={() => calTimespan(7)}>Week</button>
+                            <button type="button" class="btn btn-primary" onClick={() => calTimespan(30)}>Month</button>
                         </div>
-                </div>           
+                        <Graph className="chart" data={caloriesData} label='Calories' />
+                    </div>
+                </div>
             </div>
         </main>
 
